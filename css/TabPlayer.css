@@ -1,0 +1,118 @@
+
+.container-fluid{
+    text-align: center;
+}
+
+textarea{
+    width:60%;
+    height:60vh;
+    margin: 0 0 10px 0;
+    font-family: monospace !important;
+    color: black;
+    background: white;
+    opacity: 0.7;
+
+}
+h4{
+    color: rgba(49, 49, 49, 0.91);
+}
+
+body{
+    background: url("../images/wallpaper3.jpg");
+    background-attachment:fixed;
+    background-repeat:no-repeat;
+}
+body::-webkit-scrollbar {
+    display: none;
+}
+#content{
+    margin: 20px;
+    background: rgba(255,255,255,0.2);
+
+}
+
+
+#top{
+    text-decoration:none;
+    margin: 10px 0;
+    float: left;
+}
+#logo{
+    margin:20px 10px 0 20px;
+}
+h1{
+    font-size: 32px; color: rgba(27, 27, 27, 0.94); margin: 20px 0 0 0px;
+}
+#name{
+    font-style: italic; font-size: 20px; color: rgba(49, 49, 49, 0.91); margin-left: 7px;
+}
+#top{
+    display: block; width: 600px; position: relative; display: flex; justify-content: flex-start; align-items: center;
+}
+#header{
+    height:120px;
+    margin:0px 30px ;
+
+}
+#nav{
+    float: right;
+    margin: 22px 0px 0 0;
+}
+#nav li{
+    width:60px;
+    float:left;
+    margin-right: 5px;
+    margin-left: 5px;
+    margin-top: 24px;
+    list-style: none;
+}
+#nav li a{
+    text-align: center;
+    font-size: 18px;
+    line-height: 28px;
+    font-family: '微软雅黑';
+    font-weight: bold;
+    color: rgba(49, 49, 49, 0.91);
+    display: block;
+    height:40px;
+    width:60px;
+    opacity: 1;
+    text-decoration: none;
+}
+#nav a:hover{
+    color:white;
+    font-weight:bold ;
+}
+
+h2 {
+    padding-right: 1em;
+    color: rgba(8, 9, 41, 0.95);
+    margin: 5px 0 20px 40px;
+
+}
+.btn{
+    margin-top: 5px;
+    border-radius: 3px;
+
+}
+.btn2{
+    margin-top: 5px;
+    border-radius: 3px;
+    width: 120px;
+    height: 24px;
+
+}
+
+#speed{
+    width: 80px;
+    height: 24px;
+    margin-left: 12px;
+    border-radius: 3px;
+}
+
+
+footer {
+    margin-top: 1em;
+    padding: 1em 0;
+    margin-left: 10px;
+}

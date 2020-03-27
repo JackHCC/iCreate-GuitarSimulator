@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DrumKit</title>
+  <link rel="stylesheet" href="style.css">
+  <!--<link href="https://fonts.googleapis.com/css?family=Hammersmith+One|Monoton|Orbitron|Righteous&display=swap"
+    rel="stylesheet">-->
+  <style>
+    html {
+      /*background: burlywood;
+      background-size: cover;*/
+
+        background: url("./images/wallpaper.jpg");
+        background-attachment:fixed;
+        background-repeat:no-repeat;
+
+      font-family: 'Orbitron', sans-serif;
+      text-align: center;
+
+    }
+
+    .heading {
+      padding: 20px;
+       text-align: center;
+    }
+
+    #content{
+        background:rgba(255,255,255,0.3);
+        width: 80%;
+        height: 60%;
+        padding: 30px;
+        margin:30px 100px;
+        border-radius: 5px;
+    }
+
+    .headingbox {
+      display: flex;
+      background:rgba(255,255,255,0.6);
+      opacity: 0.8;
+      border-radius: 15px;
+      border: 2px solid rgb(0, 0, 0);
+      padding: 10px;
+      margin-left: 240px;
+      margin-bottom: 80px;
+      /* width: 80%; */
+      height: 60px;
+      width: 60%;
+      box-shadow: 5px 10px;
+      /* text-shadow: 0 0 .1rem black; */
+       text-align: center;
+    }
+
+    .border {
+      margin: 20px;
+    }
+
+    .keys {
+      display: flex;
+      /* flex: 1; */
+      min-height: 20px;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .key {
+      border-radius: 10px;
+      border: 2px solid rgb(0, 0, 0);
+      box-shadow: 5px 10px rgb(0, 0, 0);
+      margin: 10px;
+      font-size: 20%;
+      padding: .5rem .5rem;
+      transition: all .07s ease;
+      width: 10rem;
+      text-align: center;
+      color: white;
+      background: rgba(0,0,0,0.4);
+      text-shadow: 0 0 .5rem black;
+    }
+
+    kbd {
+      display: block;
+      font-size: 4rem;
+    }
+
+    .sound {
+      font-size: 1.2rem;
+      text-transform: uppercase;
+      letter-spacing: .1rem;
+      color: #ffc600;
+    }
+
+    .playing {
+      transform: scale(1.1);
+      border-color: #ffc600;
+      box-shadow: 0 0 1rem #ffc600;
+    }
+  </style>
+</head>
+
+
+<body>
+
+<div id="content">
+  <div id="top">
+    <h1 class="heading headingbox">Online Drum Kit</h1>
+  </div>
+
+  <h4>按住键盘Q,W,E,A,S,D,Z,X,C实现敲击！！！</h4>
+  <div class="keys">
+    <div data-key="81" class="key">
+      <kbd>Q</kbd>
+      <span class="sound">clap</span>
+    </div>
+    <div data-key="87" class="key">
+      <kbd>W</kbd>
+      <span class="sound">hiht</span>
+    </div>
+    <div data-key="69" class="key">
+      <kbd>E</kbd>
+      <span class="sound">kick</span>
+    </div>
+  </div>
+
+  <div class="keys">
+    <div data-key="65" class="key">
+      <kbd>A</kbd>
+      <span class="sound">opht</span>
+    </div>
+    <div data-key="83" class="key">
+      <kbd>S</kbd>
+      <span class="sound">boom</span>
+    </div>
+    <div data-key="68" class="key">
+      <kbd>D</kbd>
+      <span class="sound">ride</span>
+    </div>
+  </div>
+  
+  <div class="keys">
+    <div data-key="90" class="key">
+      <kbd>Z</kbd>
+      <span class="sound">snre</span>
+    </div>
+    <div data-key="88" class="key">
+      <kbd>X</kbd>
+      <span class="sound">tom</span>
+    </div>
+    <div data-key="67" class="key">
+      <kbd>C</kbd>
+      <span class="sound">tink</span>
+    </div>
+  </div>
+
+  <audio data-key="81" src="./impulses/sounds/clap.wav"></audio>
+  <audio data-key="87" src="./impulses/sounds/hihat.wav"></audio>
+  <audio data-key="69" src="./impulses/sounds/kick.wav"></audio>
+  <audio data-key="65" src="./impulses/sounds/openhat.wav"></audio>
+  <audio data-key="83" src="./impulses/sounds/boom.wav"></audio>
+  <audio data-key="68" src="./impulses/sounds/ride.wav"></audio>
+  <audio data-key="90" src="./impulses/sounds/snare.wav"></audio>
+  <audio data-key="88" src="./impulses/sounds/tom.wav"></audio>
+  <audio data-key="67" src="./impulses/sounds/tink.wav"></audio>
+
+  </div>
+
+  <script>
+    function removeTransition(e) {
+      if (e.propertyName !== 'transform') return; // skips it if not a transform
+      e.target.classList.remove('playing');
+    }
+
+    function playSound(e) {
+      const audio = document.querySelector(`audio[data-key="${e.keyCode}"]`);
+      const key = document.querySelector(`div[data-key="${e.keyCode}"]`);
+      if (!audio) return; // stop the function from running everything together
+
+      key.classList.add('playing');
+      audio.currentTime = 0; // Rewind to start
+      audio.play();
+    }
+
+    const keys = Array.from(document.querySelectorAll('.key'));
+    keys.forEach(key => key.addEventListener('transitionend', removeTransition));
+    window.addEventListener('keydown', playSound);
+
+  </script>
+
+</body>
+
+</html>
